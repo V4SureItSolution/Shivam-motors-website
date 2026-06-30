@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shivam Moto Best New & Used Bikes Dealer</title>
+  <!-- Bootstrap 5 + Icons + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fefefe;
+    }
+
+    .navbar {
+      background: #ffffffdd !important;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar-brand {
+      padding: 0;
+    }
+
+    .navbar-logo {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      color: #2b2b2b !important;
+      margin: 0 5px;
+      transition: 0.2s;
+    }
+
+    .nav-link:hover {
+      color: #FF8C00 !important;
+      transform: translateY(-2px);
+    }
+
+    .nav-link.active {
+      color: #000000 !important;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      background: linear-gradient(107deg, #ffffff 0%, #f4f6f9 100%);
+      color: #1a202c;
+      padding: 140px 0 120px;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .hero h1 {
+      font-weight: 800;
+      font-size: 3.8rem;
+      line-height: 1.2;
+      margin-bottom: 30px;
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, #FFB347, #FF8C00);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .btn-shine {
+      background: linear-gradient(95deg, #FFB347, #FF8C00);
+      border: none;
+      color: #111;
+      font-weight: 700;
+      padding: 12px 32px;
+      border-radius: 50px;
+      transition: 0.3s;
+      box-shadow: 0 6px 14px rgba(255, 140, 0, 0.3);
+    }
+
+    .btn-shine:hover {
+      transform: scale(1.02);
+      background: linear-gradient(95deg, #FFA033, #FF7700);
+    }
+
+    .stat-card {
+      background: rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(4px);
+      border-radius: 28px;
+      padding: 20px 10px;
+      text-align: center;
+    }
+
+    .why-card {
+      background: white;
+      border-radius: 32px;
+      padding: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
+      border: 1px solid #f0f0f0;
+      text-align: center;
+    }
+
+    .why-card i {
+      font-size: 2.5rem;
+      color: #FF8C00;
+    }
+
+    .section-title {
+      font-weight: 800;
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #FF8C00;
+      border-radius: 4px;
+    }
+
+    .bike-card {
+      border-radius: 28px;
+      overflow: hidden;
+      transition: 0.3s ease;
+      background: white;
+      border: none;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+      height: 100%;
+    }
+
+    .bike-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      background: #f3f3f3;
+    }
+
+    .badge-bike {
+      background: #FFE8D9;
+      color: #C55200;
+      font-weight: 600;
+      border-radius: 40px;
+      padding: 5px 12px;
+      display: inline-block;
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #222;
+    }
+
+    .exchange-box {
+      background: linear-gradient(125deg, #fff8ef, #fff2e0);
+      border-radius: 48px;
+      padding: 48px 32px;
+    }
+
+    footer {
+      background: #0c0c0c;
+      color: #ccc;
+      border-top-left-radius: 36px;
+      border-top-right-radius: 36px;
+    }
+
+    .social-icon {
+      background: #2c2c2c;
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: 0.2s;
+      color: #FFB347;
+    }
+
+    .social-icon:hover {
+      background: #FFB347;
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 120px 0 80px;
+        text-align: center !important;
+        border-radius: 0 0 40px 40px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+      }
+
+
+      .hero .btn-shine {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .hero .btn-outline-light {
+        width: 100%;
+      }
+
+      .section-title {
+        font-size: 1.9rem;
+      }
+
+      .exchange-box {
+        padding: 30px 20px;
+        border-radius: 30px;
+      }
+
+      footer {
+        text-align: center;
+      }
+      footer .col-md-2, footer .col-md-3, footer .col-md-4 {
+        margin-bottom: 30px !important;
+      }
+      footer img {
+        height: 60px !important;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        background: rgba(255, 255, 255, 0.98);
+        padding: 20px;
+        border-radius: 16px;
+        margin-top: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+      .nav-link {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+      }
+      .nav-link:last-child {
+        border-bottom: none;
+      }
+      .navbar-logo {
+        height: 50px;
+      }
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 35px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      color: white;
+    }
+
+    /* Sold Out Styles */
+    .sold-container {
+      position: relative;
+    }
+
+    .sold-badge-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-15deg);
+      background: rgba(220, 53, 69, 0.95);
+      color: white;
+      padding: 8px 25px;
+      font-weight: 800;
+      font-size: 1.4rem;
+      border: 2px solid white;
+      border-radius: 5px;
+      z-index: 10;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      pointer-events: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .sold-img {
+      filter: grayscale(0.8) opacity(0.6);
+    }
+
+    @media (max-width: 576px) {
+      .section-header-mobile {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      .section-header-mobile h2, .section-header-mobile h3 {
+        width: 100%;
+      }
+      .section-header-mobile .btn, .section-header-mobile a {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-light navbar-expand-lg fixed-top py-3">
+    <div class="container">
+      <a class="navbar-brand" href="admin.html">
+        <img src="shivam motor logo.jpeg" alt="Shivam Moto Logo" class="navbar-logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="new-bikes.html">New Bikes</a></li>
+          <li class="nav-item"><a class="nav-link" href="old-bikes.html">Old Bikes</a></li>
+
+
+        </ul>
+        <a href="exchange.html" class="btn btn-sm btn-outline-dark mt-3 mt-lg-0 ms-lg-3 px-3 rounded-pill d-block d-lg-inline-block text-center">Sell / Exchange</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="container text-center text-md-start">
+      <div class="row align-items-center g-lg-5">
+        <div class="col-lg-7 pe-lg-5">
+          <h1 class="">Ride with <span class="highlight">Shivam Moto</span> <br> House of Multibrand</h1>
+          <p class="lead mb-5 opacity-75">India's most trusted bike destination | New, Used & Exchange | 25+ years of
+            legacy</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="new-bikes.html" class="btn btn-shine px-5"><i class="fas fa-motorcycle me-2"></i>View Available
+              Bikes</a>
+            <a href="exchange.html" class="btn btn-outline-dark rounded-pill px-5 shadow-sm">Exchange Now →</a>
+          </div>
+        </div>
+        <div class="col-lg-5 mt-4 mt-lg-0">
+          <video autoplay muted loop playsinline class="img-fluid rounded-4 shadow-lg"
+            style="object-fit: cover; width: 100%; height: auto;">
+            <source src="bike rotate video.mp4?v=1" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5 my-5">
+    <div class="text-center mb-5 pb-3"><span class="section-title">Why Choose Us</span></div>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="why-card"><i class="fas fa-shield-alt"></i>
+          <h5 class="mt-3 fw-bold">Trusted Brand</h5>
+          <p>1 Million+ happy riders</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="why-card"><i class="fas fa-calendar-check"></i>
+          <h5 class="mt-3 fw-bold">Serving Since 2000</h5>
+          <p>25+ years of excellence</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="why-card"><i class="fas fa-star"></i>
+          <h5 class="mt-3 fw-bold">4.9★ Google Rating</h5>
+          <p>Top rated dealership</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="why-card"><i class="fas fa-handshake"></i>
+          <h5 class="mt-3 fw-bold">Hassle Free Exchange</h5>
+          <p>Instant valuation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4 section-header-mobile">
+      <h3 class="fw-bold">Brands We Serve</h3><a href="new-bikes.html"
+        class="text-decoration-none text-warning fw-semibold">View All <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="row text-center g-4">
+      <div class="col-3 col-md-2"><i class="fas fa-motorcycle fa-3x text-secondary"></i>
+        <p class="mt-2 fw-semibold">Hero</p>
+      </div>
+      <div class="col-3 col-md-2"><i class="fas fa-bolt fa-3x text-secondary"></i>
+        <p class="mt-2 fw-semibold">Suzuki</p>
+      </div>
+      <div class="col-3 col-md-2"><i class="fas fa-shield-alt fa-3x text-secondary"></i>
+        <p class="mt-2 fw-semibold">Honda</p>
+      </div>
+      <div class="col-3 col-md-2"><i class="fas fa-tachometer-alt fa-3x text-secondary"></i>
+        <p class="mt-2 fw-semibold">Bajaj</p>
+      </div>
+      <div class="col-3 col-md-2"><i class="fab fa-yammer fa-3x text-secondary"></i>
+        <p class="mt-2 fw-semibold">Yamaha</p>
+      </div>
+      <div class="col-3 col-md-2"><i class="fas fa-charging-station fa-3x text-secondary"></i>
+        <p class="mt-2 fw-semibold">TVS</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFFERS SECTION -->
+  <div class="container py-5" id="offers-wrapper" style="display: none;">
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4 section-header-mobile">
+      <h2 class="fw-bold" style="color: #e67e22;">🎉 Today\'s Exclusive Offers</h2>
+    </div>
+    <div class="row g-4" id="offers-container">
+      <!-- Offers load here -->
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4 section-header-mobile">
+      <h2 class="fw-bold">Fresh Arrivals – New Bikes</h2><a href="new-bikes.html"
+        class="btn btn-outline-warning rounded-pill">View All New Bikes →</a>
+    </div>
+    <div class="row g-4" id="new-bikes-home">
+      <div class="text-center w-100 py-3">
+        <div class="spinner-border text-dark"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+      <h2 class="fw-bold">Pre Owned – Used Bikes</h2><a href="old-bikes.html"
+        class="btn btn-outline-warning rounded-pill">View All Used Bikes →</a>
+    </div>
+    <div class="row g-4" id="old-bikes-home">
+      <div class="text-center w-100 py-3">
+        <div class="spinner-border text-dark"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5 my-5">
+    <div class="exchange-box text-center">
+      <h2 class="fw-bold">💱 Sell or Exchange Your Bike</h2>
+      <p class="fs-5 mt-2">Get the best value for your bike. Instant price, zero paperwork, free inspection.</p>
+      <a href="exchange.html" class="btn btn-dark btn-lg rounded-pill px-5 mt-3"><i
+          class="fas fa-exchange-alt me-2"></i>Sell / Exchange Now</a>
+    </div>
+  </div>
+
+  <div class="container py-4 mb-4">
+    <div class="text-center">
+      <h2 class="section-title"> What Our Customers Say</h2>
+      <p class="mt-3 fs-5">Rated 4.8/5 on Google • 1,200+ reviews</p>
+    </div>
+    <div class="row mt-4 g-4">
+      <div class="col-md-4">
+        <div class="p-4 bg-white rounded-4 shadow-sm"><i class="fas fa-star text-warning"></i><i
+            class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i
+            class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+          <p class="mt-2 fst-italic">"Excellent service! Got my dream bike at the best price."</p>
+          <h6 class="fw-bold">— Raj Kumar</h6>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 bg-white rounded-4 shadow-sm"><i class="fas fa-star text-warning"></i><i
+            class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i
+            class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
+          <p class="mt-2">"Very professional and trustworthy. Best dealership in town."</p>
+          <h6 class="fw-bold">— Priya S</h6>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 bg-white rounded-4 shadow-sm"><i class="fas fa-star text-warning"></i><i
+            class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i
+            class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
+          <p class="mt-2">"Great collection, staff very helpful and transparent."</p>
+          <h6 class="fw-bold">— Arun M</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIKE DETAILS MODAL -->
+  <div class="modal fade" id="bikeDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 rounded-4 overflow-hidden">
+        <div class="modal-body p-0">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <img id="modalBikeImg" src="" class="w-100 h-100" style="object-fit: cover; min-height: 300px;" alt="">
+            </div>
+            <div class="col-md-6 p-4 p-lg-5 d-flex flex-column">
+              <button type="button" class="btn-close ms-auto mb-2" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div id="modalBikeBadge"></div>
+              <h2 id="modalBikeTitle" class="fw-bold mb-2"></h2>
+              <h3 id="modalBikePrice" class="text-danger fw-bold fs-4 mb-3"></h3>
+              <div id="modalBikeInfo" class="text-muted fw-semibold mb-3"></div>
+              <hr>
+              <p id="modalBikeDescription" class="mb-4 text-secondary" style="white-space: pre-line;"></p>
+              <div class="mt-auto">
+                <a id="modalBikeEnquiryBtn" href="#" target="_blank"
+                  class="btn btn-warning w-100 py-3 fw-bold rounded-pill">
+                  <i class="fab fa-whatsapp me-2"></i>Enquire on WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pt-5 pb-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <a href="admin.html">
+            <img src="shivam motor logo.jpeg" alt="Shivam Moto Logo" style="height: 80px; border-radius: 50%; margin-bottom: 20px;">
+          </a>
+          <p>House of Multibrand – New & Used Bikes. 25+ years of trust.</p>
+          <div><a href="https://www.instagram.com/shivam_moto_official?igsh=MWthNWlsZTZsNzJseg%3D%3D&utm_source=qr" target="_blank" rel="noopener"
+              class="social-icon me-2"><i class="fab fa-instagram"></i></a><a href="#" class="social-icon"><i
+                class="fab fa-google"></i></a></div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <h5 class="text-white">Explore</h5>
+          <ul class="list-unstyled">
+            <li><a href="new-bikes.html" class="text-secondary text-decoration-none">New Bikes</a></li>
+            <li><a href="old-bikes.html" class="text-secondary text-decoration-none">Old Bikes</a></li>
+            <li><a href="exchange.html" class="text-secondary text-decoration-none">Exchange</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="text-white">Contact</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i>Mumbai - Pune Highway, Shivam Nagar</p>
+          <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="text-white">Hours</h5>
+          <p>Mon-Sun: 10am – 8pm</p>
+        </div>
+      </div>
+      <hr class="bg-secondary">
+      <p class="text-center text-secondary mt-3">© 2026 Shivam Moto | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const API_BASE = 'http://127.0.0.1:5000';
+    async function loadHomeBikes() {
+      try {
+        const isAdmin = !!localStorage.getItem('adminToken');
+        const resp = await fetch(API_BASE + '/app/bikes');
+        const allBikes = await resp.json();
+
+        const newBikes = allBikes.filter(b => b.category === 'new').slice(0, 4);
+        const oldBikes = allBikes.filter(b => b.category === 'old').slice(0, 4);
+        const offers = allBikes.filter(b => b.category === 'offer');
+
+        if (offers.length > 0) {
+          document.getElementById('offers-wrapper').style.display = 'block';
+          document.getElementById('offers-container').innerHTML = offers.map(bike => {
+            const isSold = bike.status === 'sold';
+            return `
+          <div class="col-md-6 col-lg-4">
+            <div class="bike-card card h-100 border-warning border-2" style="background:#fffaf0;">
+              <div class="sold-container">
+                <img src="${bike.image_url ? (bike.image_url.startsWith('http') ? bike.image_url : `${API_BASE}/${bike.image_url}`) : 'https://via.placeholder.com/300x200?text=No+Image'}" class="card-img-top ${isSold ? 'sold-img' : ''}" alt="${bike.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
+                ${isSold ? '<div class="sold-badge-overlay">Sold Out</div>' : ''}
+              </div>
+              <div class="card-body">
+                <span class="badge bg-danger rounded-pill px-3 py-2 mb-2">🔥 ${bike.badge || 'Limited Time Offer'}</span>
+                <h4 class="fw-bold mt-2">${bike.title}</h4>
+                <p class="price text-danger">${bike.price}</p>
+                ${bike.info ? `<p class="fw-semibold mb-1">${bike.info}</p>` : ''}
+                ${bike.description ? `
+                  <p class="small text-muted mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${bike.description}</p>
+                  <button class="btn btn-link btn-sm p-0 mb-3 text-warning text-decoration-none fw-bold" onclick="window.showBikeDetails(${JSON.stringify(bike).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&quot;/g, '&quot;').replace(/'/g, '&#39;').replace(/\"/g, '&quot;')})">Read More</button>
+                ` : '<div class="mb-3"></div>'}
+                ${isSold ? 
+                  `<button class="btn btn-secondary rounded-pill w-100 fw-bold disabled">Sold Out</button>` :
+                  `<a href="https://api.whatsapp.com/send?phone=919876543210&text=Hi,%20I%20am%20interested%20in%20your%20offer:%20${encodeURIComponent(bike.title)}" target="_blank" class="btn btn-warning rounded-pill w-100 fw-bold">Claim Offer</a>`
+                }
+              </div>
+            </div>
+          </div>
+        `}).join('');
+        }
+
+        const newWrapper = document.getElementById('new-bikes-home');
+        if (newBikes.length === 0) newWrapper.innerHTML = '<p class="text-muted col-12">No items listed yet.</p>';
+        else newWrapper.innerHTML = newBikes.map(bike => {
+          const isSold = bike.status === 'sold';
+          const imgUrl = bike.image_url ? (bike.image_url.startsWith('http') ? bike.image_url : `${API_BASE}/${bike.image_url}`) : 'https://via.placeholder.com/300x200?text=No+Image';
+          return `
+          <div class="col-md-6 col-lg-3">
+            <div class="bike-card card h-100">
+              <div class="sold-container">
+                <img src="${imgUrl}" class="card-img-top ${isSold ? 'sold-img' : ''}" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
+                ${isSold ? '<div class="sold-badge-overlay">Sold Out</div>' : ''}
+              </div>
+              <div class="card-body">
+                ${bike.badge ? `<span class="badge-bike mb-2">${bike.badge}</span>` : ''}
+                <h5 class="fw-bold ${bike.badge ? 'mt-2' : ''}">${bike.title}</h5>
+                <p class="price">${bike.price}</p>
+                ${bike.info ? `<p class="mb-1 fw-semibold text-muted small">${bike.info}</p>` : ''}
+                ${bike.description ? `
+                  <p class="small text-muted mb-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${bike.description}</p>
+                  <button class="btn btn-link btn-sm p-0 mb-3 text-warning text-decoration-none fw-bold" onclick="window.showBikeDetails(${JSON.stringify(bike).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&quot;/g, '&quot;').replace(/'/g, '&#39;').replace(/\"/g, '&quot;')})">Read More</button>
+                ` : '<div class="mb-3"></div>'}
+                
+                  ${isSold ? 
+                  `<button class="btn btn-secondary btn-sm rounded-pill w-100 mb-2 disabled">Sold Out</button>` :
+                  `<a href="https://api.whatsapp.com/send?phone=919876543210&text=Hi,%20I%20am%20interested%20in%20your%20bike:%20${encodeURIComponent(bike.title)}" target="_blank" class="btn btn-outline-warning btn-sm rounded-pill w-100 mb-2">Enquire Now</a>`
+                }
+                </div>
+            </div>
+          </div>`;
+        }).join('');
+
+        const oldWrapper = document.getElementById('old-bikes-home');
+        if (oldBikes.length === 0) oldWrapper.innerHTML = '<p class="text-muted col-12">No items listed yet.</p>';
+        else oldWrapper.innerHTML = oldBikes.map(bike => {
+          const isSold = bike.status === 'sold';
+          const imgUrl2 = bike.image_url ? (bike.image_url.startsWith('http') ? bike.image_url : `${API_BASE}/${bike.image_url}`) : 'https://via.placeholder.com/300x200?text=No+Image';
+          return `
+          <div class="col-md-6 col-lg-3">
+            <div class="bike-card card h-100">
+              <div class="sold-container">
+                <img src="${imgUrl2}" class="card-img-top ${isSold ? 'sold-img' : ''}" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
+                ${isSold ? '<div class="sold-badge-overlay">Sold Out</div>' : ''}
+              </div>
+              <div class="card-body">
+                ${bike.badge ? `<span class="badge bg-secondary text-white mb-2">${bike.badge}</span>` : ''}
+                <h5 class="fw-bold ${bike.badge ? 'mt-2' : ''}">${bike.title}</h5>
+                <p class="price">${bike.price}</p>
+                ${bike.info ? `<p class="mb-1 fw-semibold text-muted small">${bike.info}</p>` : ''}
+                ${bike.description ? `
+                  <p class="small text-muted mb-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${bike.description}</p>
+                  <button class="btn btn-link btn-sm p-0 mb-3 text-warning text-decoration-none fw-bold" onclick="window.showBikeDetails(${JSON.stringify(bike).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&quot;/g, '&quot;').replace(/'/g, '&#39;').replace(/\"/g, '&quot;')})">Read More</button>
+                ` : '<div class="mb-3"></div>'}
+                
+                ${isSold ? 
+                  `<button class="btn btn-secondary btn-sm rounded-pill w-100 mb-2 disabled">Sold Out</button>` :
+                  `<a href="https://api.whatsapp.com/send?phone=919876543210&text=Hi,%20I%20am%20interested%20in%20your%20bike:%20${encodeURIComponent(bike.title)}" target="_blank" class="btn btn-outline-dark btn-sm rounded-pill w-100 mb-2">Enquire Now</a>`
+                }
+              </div>
+            </div>
+          </div>`;
+        }).join('');
+
+      } catch (e) {
+        console.error(e);
+        document.getElementById('new-bikes-home').innerHTML = '<p class="text-danger my-3">Error fetching bikes.</p>';
+      }
+    }
+
+    // DELETE HANDLER
+    window.deleteBike = async function(event, id) {
+      console.log('deleteBike called for ID:', id);
+      if (!id) return;
+
+      if (!confirm('Are you sure you want to delete this bike?')) {
+        console.log('Delete cancelled');
+        return;
+      }
+      
+      const token = localStorage.getItem('adminToken');
+      console.log('Token exists:', !!token);
+      
+      // Find the button to show loading state
+      const btn = event.target.closest('button');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
+      }
+
+      try {
+        console.log('Sending DELETE request to:', `/app/admin/bikes/${id}`);
+        const res = await fetch(`${API_BASE}/app/admin/bikes/${id}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        console.log('Response status:', res.status);
+        if (res.ok) {
+          alert('Bike deleted successfully');
+          location.reload();
+        } else {
+          const data = await res.json();
+          console.error('Delete failed:', data);
+          alert(data.error || 'Failed to delete bike');
+          if (res.status === 401) {
+            localStorage.removeItem('adminToken');
+            location.reload();
+          }
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-trash-alt"></i> Delete';
+          }
+        }
+      } catch (err) {
+        console.error('Delete error:', err);
+        alert('Error connecting to server');
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-trash-alt"></i> Delete';
+        }
+      }
+    };
+
+    window.showBikeDetails = function(bike) {
+      document.getElementById('modalBikeTitle').textContent = bike.title;
+      document.getElementById('modalBikePrice').textContent = bike.price;
+      document.getElementById('modalBikeImg').src = bike.image_url
+        ? (bike.image_url.startsWith('http') ? bike.image_url : `${API_BASE}/${bike.image_url}`)
+        : 'https://via.placeholder.com/400x300?text=No+Image';
+      document.getElementById('modalBikeInfo').textContent = bike.info || '';
+      document.getElementById('modalBikeDescription').textContent = bike.description || '';
+
+      const badgeContainer = document.getElementById('modalBikeBadge');
+      if (bike.badge) {
+        badgeContainer.innerHTML = `<span class="badge ${bike.category === 'old' ? 'bg-secondary' : (bike.category === 'offer' ? 'bg-danger' : 'bg-success')} rounded-pill px-3 py-2 mb-3">${bike.badge}</span>`;
+      } else {
+        badgeContainer.innerHTML = '';
+      }
+
+      const waMsg = `Hi, I am interested in ${bike.title} (${bike.price})`;
+      document.getElementById('modalBikeEnquiryBtn').href = `https://api.whatsapp.com/send?phone=919876543210&text=${encodeURIComponent(waMsg)}`;
+
+      const myModal = new bootstrap.Modal(document.getElementById('bikeDetailsModal'));
+      myModal.show();
+    }
+
+    loadHomeBikes();
+
+    // deleteBike removed in favor of global listener
+  </script>
+
+  <a href="https://api.whatsapp.com/send?phone=919876543210&text=Hi!%20I%20have%20an%20enquiry." class="whatsapp-float" target="_blank"
+    aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</body>
+
+</html>
