@@ -24,7 +24,7 @@ def create_app(config_class=Config):
     CORS(app, resources={r"/*": {"origins": "*"}})
     
     with app.app_context():
-        from app.models.models import Bike, Valuation
+        from app.models.models import Bike, Valuation, AdminUser
         db.create_all()
     
     # Create upload folder if it doesn't exist

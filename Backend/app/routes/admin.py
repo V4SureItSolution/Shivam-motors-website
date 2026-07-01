@@ -7,9 +7,31 @@ import shutil
 from datetime import timedelta
 
 from app import db
-from app.models.models import Bike, Valuation
+from app.models.models import Bike, Valuation, AdminUser
 
 bp = Blueprint('admin', __name__)
+
+@bp.route('/register', methods=['POST'])
+def admin_register():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    username = data.get('username', '').strip()
+    password = data.get('password', '').strip()
+
+    if not username or not password:
+        return jsonify({"error": "Username and password are required"}), 400
+
+    if AdminUser.query.filter_by(username=username).first():
+        return jsonify({"error": "Username already exists"}), 409
+
+    new_admin = AdminUser(username=username)
+    new_admin.set_password(password)
+    db.session.add(new_admin)
+    db.session.commit()
+    return jsonify({"message": f"Admin user '{username}' created successfully"}), 201
+
 
 @bp.route('/login', methods=['POST'])
 def admin_login():
@@ -17,21 +39,34 @@ def admin_login():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
-    
-    if username == "admin07" and password == "shivaadmin07":
-        print(" Login successful")  # Debug log
+
+    # Check DB-stored admin users first
+    admin = AdminUser.query.filter_by(username=username).first()
+    if admin and admin.verify_password(password):
+        print(" Login successful (DB user)")  # Debug log
         return jsonify({
             "token": "admin-token-12345",
             "message": "Login successful"
         })
-    else:
-        print(" Login failed")  # Debug log
-        return jsonify({"error": "Invalid credentials. Access denied."}), 401
+
+    # Fallback: original hard-coded credentials
+    if username == "admin07" and password == "shivaadmin07":
+        print(" Login successful (default admin)")  # Debug log
+        return jsonify({
+            "token": "admin-token-12345",
+            "message": "Login successful"
+        })
+
+    print(" Login failed")  # Debug log
+    return jsonify({"error": "Invalid credentials. Access denied."}), 401
 
 @bp.route('/bikes', methods=['POST'])
 def add_bike():
     print(" Adding new bike")  # Debug log
     try:
+        from werkzeug.utils import secure_filename
+        import traceback
+        
         # Get form data
         title = request.form.get('title')
         price = request.form.get('price')
@@ -49,14 +84,18 @@ def add_bike():
         if photo.filename == '':
             return jsonify({"error": "No file selected"}), 400
         
-        # Create upload directory if it doesn't exist
-        upload_dir = os.path.join(os.path.dirname(__file__), "..", "uploads")
+        # Create upload directory using absolute path
+        upload_dir = os.path.abspath(os.path.join(current_app.root_path, "uploads"))
         if not os.path.exists(upload_dir):
             os.makedirs(upload_dir, exist_ok=True)
         
         # Generate unique filename
         unique_suffix = f"{int(time.time() * 1000)}-{random.randint(0, 10**9)}"
-        extension = os.path.splitext(photo.filename)[1]
+        original_filename = secure_filename(photo.filename)
+        extension = os.path.splitext(original_filename)[1]
+        if not extension:
+            extension = '.jpg'  # Default if no extension
+            
         filename = f"{unique_suffix}{extension}"
         file_path = os.path.join(upload_dir, filename)
         
@@ -87,8 +126,10 @@ def add_bike():
         
     except Exception as e:
         db.session.rollback()
-        print(f" Error adding bike: {e}")  # Debug log
-        return jsonify({"error": str(e)}), 500
+        import traceback
+        tb = traceback.format_exc()
+        print(f" Error adding bike:\n{tb}")  # Debug log
+        return jsonify({"error": f"Internal Error: {str(e)} | Details: {tb}"}), 500
 
 @bp.route('/bikes/<int:bike_id>', methods=['DELETE'])
 def delete_bike(bike_id):
